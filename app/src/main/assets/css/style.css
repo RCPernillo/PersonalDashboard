@@ -1,0 +1,290 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   TABLERO · estética Teenage Engineering / OP-1
+   Crema dominante de día; naranja y verde SOLO como puntuación.
+   Sin gradientes, sin sombras, radios 0–2px, líneas divisorias de 1px.
+   El cambio de tema es solo un intercambio de tokens: mismo layout siempre.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root[data-theme="light"] {
+  --bg: #f2ede3;          /* crema base */
+  --bg-inset: #ece6d9;    /* "viñeta" del archivero: tinte sólido, sin gradiente */
+  --ink: #1a1a1a;         /* carbón */
+  --ink-dim: #8d8878;
+  --line: #d8d2c4;        /* divisor hairline */
+  --accent: #ff5500;      /* naranja: fecha de hoy, tab activo, puntos de evento */
+  --green: #6b7d5a;       /* verde apagado: señal secundaria */
+}
+:root[data-theme="dark"],
+:root[data-theme="off"] {
+  --bg: #0f0f0f;
+  --bg-inset: #141414;
+  --ink: #f2ede3;
+  --ink-dim: #6f6a5e;
+  --line: #2a2a2a;
+  --accent: #ff5500;
+  --green: #6b7d5a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+/* el atributo hidden SIEMPRE gana (los display:flex de abajo no lo anulan) */
+[hidden] { display: none !important; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;                 /* pantalla única: NO scroll */
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, Roboto, sans-serif;
+  user-select: none;
+}
+
+/* Cambio de tema sin parpadeo: fundido corto de color, nada se recarga */
+body, .panel, #cabinet, #folder-content, .tab, .btn, input, select, li {
+  transition: background-color .35s linear, color .35s linear,
+              border-color .35s linear;
+}
+
+.mono {
+  font-family: "Roboto Mono", "Droid Sans Mono", "Cutive Mono", monospace;
+  font-variant-numeric: tabular-nums;
+}
+.dim    { color: var(--ink-dim); }
+.accent { color: var(--accent); }
+
+/* ── BLACK-OFF 22:00–05:00 ─────────────────────────────────────────────── */
+#off-overlay {
+  position: fixed; inset: 0; z-index: 99;
+  background: #000;
+  opacity: 0; pointer-events: none;
+  transition: opacity 1.2s linear;
+}
+:root[data-theme="off"] #off-overlay { opacity: 1; pointer-events: auto; }
+
+/* ── Marco general ─────────────────────────────────────────────────────── */
+#dashboard { display: flex; flex-direction: column; height: 100%; }
+
+/* etiquetas de panel estilo hardware: arriba-izquierda, mono, mayúsculas */
+.panel-label {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5vh;
+  letter-spacing: .22em;
+  color: var(--ink-dim);
+  margin-bottom: 1.6vh;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.panel-label-right { letter-spacing: .18em; font-size: 1.4vh; }
+
+/* ── ZONA DE VISTAZO ───────────────────────────────────────────────────── */
+#glance {
+  height: 56vh;
+  display: grid;
+  grid-template-columns: 1.28fr 1.02fr 1fr 0.92fr;
+  border-bottom: 1px solid var(--line);
+}
+.panel {
+  padding: 2.6vh 1.6vw 2vh;
+  border-right: 1px solid var(--line);
+  display: flex; flex-direction: column;
+  min-width: 0; overflow: hidden;
+}
+.panel:last-child { border-right: none; }
+
+/* 01 · RELOJ */
+.clock-wrap { display: flex; align-items: flex-end; gap: 1vw; flex: 1; min-height: 0; }
+#clock-canvas { flex: 1 1 0; min-width: 0; height: 24vh; display: block; }
+.clock-side { flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: .8vh; padding-bottom: .4vh; }
+#sec-canvas { width: 4.6vw; height: 7vh; display: block; }
+#ampm { font-size: 2vh; letter-spacing: .3em; color: var(--ink-dim); }
+.clock-foot {
+  margin-top: 2.2vh; padding-top: 1.6vh;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+#date-line { font-size: 2.4vh; letter-spacing: .14em; }   /* hoy: naranja */
+#battery   { font-size: 1.6vh; letter-spacing: .14em; }
+
+/* 02 · CALENDARIO */
+#cal-head, #cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+#cal-head span {
+  font-size: 1.4vh; letter-spacing: .1em; text-align: center;
+  color: var(--ink-dim); padding-bottom: 1vh;
+}
+#cal-grid { flex: 1; align-content: stretch; row-gap: .2vh; }
+.cal-cell {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: flex-start; gap: .4vh;
+  font-size: 1.9vh; line-height: 1.4;
+  padding-top: .5vh;
+  color: var(--ink);
+  border-radius: 2px;
+}
+.cal-cell.out   { color: transparent; }
+.cal-cell.today { color: var(--accent); outline: 1px solid var(--accent); outline-offset: -1px; }
+.cal-dots { display: flex; justify-content: center; gap: .3vw; min-height: .8vh; }
+.dot {
+  display: inline-block; width: .8vh; height: .8vh; border-radius: 50%;
+}
+.dot-orange  { background: var(--accent); }
+.dot-green   { background: var(--green); }
+.dot-green-o { background: transparent; box-shadow: inset 0 0 0 1px var(--green); }
+.cal-legend {
+  display: flex; gap: 1.2vw; padding-top: 1.2vh; margin-top: .6vh;
+  border-top: 1px solid var(--line);
+  font-size: 1.25vh; letter-spacing: .14em;
+}
+.cal-legend .dot { margin-right: .4vw; }
+
+/* 03 · MES */
+#month-list { list-style: none; flex: 1; overflow-y: auto; }
+#month-list li {
+  display: flex; align-items: baseline; gap: .9vw;
+  padding: 1vh 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.7vh;
+}
+#month-list li .d { color: var(--accent); letter-spacing: .08em; white-space: nowrap; }
+#month-list li .t { letter-spacing: .06em; text-transform: uppercase; }
+#month-list li .svc { color: var(--green); font-size: 1.45vh; display: block; margin-top: .3vh; }
+#month-list li.empty { color: var(--ink-dim); border-bottom: none; }
+.mini-btn {
+  background: none; border: 1px solid var(--line); border-radius: 2px;
+  color: var(--ink-dim); font: inherit; font-size: 1.6vh;
+  width: 3vh; height: 3vh; line-height: 1;
+}
+.mini-btn:active { color: var(--accent); border-color: var(--accent); }
+
+/* 04 · VERSÍCULO */
+#verse-text {
+  flex: 1; font-size: 1.9vh; line-height: 1.75; letter-spacing: .02em;
+  overflow: hidden; display: flex; align-items: center;
+}
+#verse-ref {
+  font-size: 1.5vh; letter-spacing: .18em; text-transform: uppercase;
+  padding-top: 1.4vh; border-top: 1px solid var(--line);
+}
+
+/* ── ZONA ARCHIVERO ────────────────────────────────────────────────────── */
+#cabinet {
+  height: 44vh;
+  display: flex; flex-direction: column;
+  padding: 2vh 1.6vw 1.4vh;
+}
+
+/* pestañas tipo separador de archivero: rectángulos precisos sobre una
+   línea base; la activa "sube" y se funde con el contenido (sin animación) */
+#tabs { display: flex; gap: .5vw; border-bottom: 1px solid var(--line); }
+.tab {
+  font: inherit; font-size: 1.6vh; letter-spacing: .22em;
+  color: var(--ink-dim);
+  background: var(--bg);
+  border: 1px solid var(--line); border-bottom: none;
+  border-radius: 2px 2px 0 0;
+  padding: 1.2vh 2.2vw .9vh;
+  position: relative; top: 1px;
+}
+.tab.active {
+  color: var(--accent);
+  background: var(--bg-inset);
+  border-color: var(--line);
+}
+
+/* "viñeta" del archivero: tinte sólido + marco hairline (sin gradientes) */
+#folder-content {
+  flex: 1; min-height: 0;
+  background: var(--bg-inset);
+  border: 1px solid var(--line); border-top: none;
+  padding: 2vh 1.6vw;
+  overflow: hidden;
+}
+.folder { height: 100%; display: flex; flex-direction: column; min-height: 0; }
+
+.row-input { display: flex; gap: .8vw; margin-bottom: 1.6vh; }
+input, select {
+  font: inherit; font-size: 1.8vh; letter-spacing: .05em;
+  color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 2px;
+  padding: 1vh 1vw; outline: none; min-width: 0;
+}
+.row-input input { flex: 1; }
+input::placeholder { color: var(--ink-dim); letter-spacing: .12em; font-size: 1.5vh; }
+
+.btn {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.5vh; letter-spacing: .18em;
+  color: var(--ink); background: none;
+  border: 1px solid var(--ink); border-radius: 2px;
+  padding: 1vh 1.6vw; white-space: nowrap;
+}
+.btn:active { color: var(--accent); border-color: var(--accent); }
+.btn.dim { color: var(--ink-dim); border-color: var(--line); }
+.btn.danger { color: var(--accent); border-color: var(--accent); }
+.btn.on { color: var(--accent); border-color: var(--accent); }
+
+/* listas dentro de fólderes */
+.folder ul { list-style: none; flex: 1; overflow-y: auto; min-height: 0; }
+.folder li {
+  display: flex; align-items: baseline; gap: 1vw;
+  padding: 1.1vh .4vw;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.8vh; letter-spacing: .04em;
+}
+.folder li .x {
+  margin-left: auto; color: var(--ink-dim);
+  padding: 0 .8vw; font-size: 1.8vh;
+}
+.folder li .when { color: var(--ink-dim); font-size: 1.35vh; white-space: nowrap; }
+.folder li.empty { color: var(--ink-dim); border-bottom: none; }
+
+/* SPOTIFY */
+#sp-status { font-size: 1.4vh; letter-spacing: .14em; margin-bottom: .6vh; }
+#sp-results li .artist { color: var(--ink-dim); }
+#sp-results li .tick { color: var(--accent); }
+
+/* MENÚS */
+#menu-weeks { display: flex; gap: .6vw; margin-bottom: 2.4vh; }
+.week-btn {
+  font: inherit; font-size: 1.4vh; letter-spacing: .16em;
+  color: var(--ink-dim); background: none;
+  border: 1px solid var(--line); border-radius: 2px;
+  padding: .9vh 1.4vw;
+}
+.week-btn.sel { color: var(--ink); border-color: var(--ink); }
+.week-btn.cur::after { content: "·"; color: var(--accent); margin-left: .5vw; }
+#menu-name {
+  flex: 1; display: flex; align-items: center;
+  font-size: 4.6vh; letter-spacing: .1em; text-transform: uppercase;
+}
+#folder-menus .btn { align-self: flex-start; }
+
+/* COMPRAS: marcado = verde apagado (señal secundaria) */
+#shop-list li.checked { color: var(--green); }
+#shop-list li.checked .item { text-decoration: line-through; }
+#shop-list li .tick { width: 2vh; color: var(--green); }
+
+/* ── fila de control fija ──────────────────────────────────────────────── */
+#controls {
+  display: flex; align-items: center; gap: 1vw;
+  padding-top: 1.4vh; margin-top: 1.4vh;
+  border-top: 1px solid var(--line);
+}
+#hw-status { font-size: 1.4vh; letter-spacing: .12em; margin-left: auto; }
+
+/* ── editor de eventos ─────────────────────────────────────────────────── */
+#modal-backdrop {
+  position: fixed; inset: 0; z-index: 50;
+  background: rgba(0,0,0,.45);
+  display: flex; align-items: center; justify-content: center;
+}
+#modal {
+  width: 34vw; min-width: 340px;
+  background: var(--bg);
+  border: 1px solid var(--ink); border-radius: 2px;
+  padding: 2.4vh 1.6vw;
+}
+#modal label {
+  display: flex; flex-direction: column; gap: .5vh;
+  font-size: 1.3vh; letter-spacing: .18em; color: var(--ink-dim);
+  margin-bottom: 1.6vh;
+}
+#modal-btns { display: flex; gap: .8vw; margin-top: 2vh; }

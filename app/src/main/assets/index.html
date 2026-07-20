@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Tablero</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- BLACK-OFF 22:00–05:00: capa negra total sobre todo -->
+<div id="off-overlay" aria-hidden="true"></div>
+
+<main id="dashboard">
+
+  <!-- ══ ZONA DE VISTAZO (arriba, permanente, sin interacción) ══ -->
+  <section id="glance">
+
+    <div class="panel" id="p-reloj">
+      <div class="panel-label">01 · RELOJ</div>
+      <div class="clock-wrap">
+        <canvas id="clock-canvas"></canvas>
+        <div class="clock-side">
+          <canvas id="sec-canvas"></canvas>
+          <div id="ampm" class="mono">AM</div>
+        </div>
+      </div>
+      <div class="clock-foot">
+        <div id="date-line" class="mono accent">—</div>
+        <div id="battery" class="mono dim">BAT —%</div>
+      </div>
+    </div>
+
+    <div class="panel" id="p-cal">
+      <div class="panel-label">02 · CALENDARIO
+        <span id="cal-month" class="panel-label-right mono"></span>
+      </div>
+      <div id="cal-head" class="mono"></div>
+      <div id="cal-grid" class="mono"></div>
+      <div class="cal-legend mono dim">
+        <span><i class="dot dot-orange"></i>EVENTO</span>
+        <span><i class="dot dot-green-o"></i>CULTO</span>
+        <span><i class="dot dot-green"></i>ASIGNACIÓN</span>
+      </div>
+    </div>
+
+    <div class="panel" id="p-mes">
+      <div class="panel-label">03 · MES
+        <button id="btn-add-event" class="mini-btn" title="Agregar evento">+</button>
+      </div>
+      <ul id="month-list" class="mono"></ul>
+    </div>
+
+    <div class="panel" id="p-verso">
+      <div class="panel-label">04 · VERSÍCULO</div>
+      <div id="verse-text" class="mono"></div>
+      <div id="verse-ref" class="mono dim"></div>
+    </div>
+
+  </section>
+
+  <!-- ══ ZONA ARCHIVERO (abajo, fólderes) ══ -->
+  <section id="cabinet">
+    <nav id="tabs" class="mono">
+      <button class="tab active" data-folder="spotify">SPOTIFY</button>
+      <button class="tab" data-folder="menus">MENÚS</button>
+      <button class="tab" data-folder="notas">NOTAS</button>
+      <button class="tab" data-folder="compras">COMPRAS</button>
+    </nav>
+
+    <div id="folder-content">
+
+      <div class="folder" id="folder-spotify">
+        <div class="row-input">
+          <input id="sp-query" class="mono" type="search" autocomplete="off"
+                 placeholder="BUSCAR CANCIÓN O ARTISTA…">
+          <button id="sp-search" class="btn">BUSCAR</button>
+        </div>
+        <div id="sp-status" class="mono dim"></div>
+        <ul id="sp-results" class="mono"></ul>
+      </div>
+
+      <div class="folder" id="folder-menus" hidden>
+        <div id="menu-weeks" class="mono">
+          <button class="week-btn" data-week="1">SEMANA 1</button>
+          <button class="week-btn" data-week="2">SEMANA 2</button>
+          <button class="week-btn" data-week="3">SEMANA 3</button>
+          <button class="week-btn" data-week="4">SEMANA 4</button>
+        </div>
+        <div id="menu-name" class="mono"></div>
+        <div class="row-input" id="menu-edit-row" hidden>
+          <input id="menu-input" class="mono" type="text" maxlength="60">
+          <button id="menu-save" class="btn">GUARDAR</button>
+        </div>
+        <button id="menu-edit" class="btn">EDITAR</button>
+      </div>
+
+      <div class="folder" id="folder-notas" hidden>
+        <div class="row-input">
+          <input id="note-input" class="mono" type="text" maxlength="200"
+                 placeholder="NUEVA NOTA…">
+          <button id="note-add" class="btn">AGREGAR</button>
+        </div>
+        <ul id="note-list" class="mono"></ul>
+      </div>
+
+      <div class="folder" id="folder-compras" hidden>
+        <div class="row-input">
+          <input id="shop-input" class="mono" type="text" maxlength="80"
+                 placeholder="AGREGAR A LA LISTA…">
+          <button id="shop-add" class="btn">AGREGAR</button>
+          <button id="shop-clear" class="btn dim">QUITAR MARCADOS</button>
+        </div>
+        <ul id="shop-list" class="mono"></ul>
+      </div>
+
+    </div>
+
+    <!-- Fila de control fija, visible con cualquier fólder activo -->
+    <div id="controls" class="mono">
+      <button id="btn-light" class="btn">LUZ · —</button>
+      <button id="btn-speaker" class="btn">CONECTAR BOCINA</button>
+      <span id="hw-status" class="dim"></span>
+    </div>
+  </section>
+
+</main>
+
+<!-- Editor mínimo de eventos (alta/edición/borrado) -->
+<div id="modal-backdrop" hidden>
+  <div id="modal" class="mono">
+    <div class="panel-label">EVENTO</div>
+    <label>FECHA <input id="ev-date" type="date"></label>
+    <label>TÍTULO <input id="ev-title" type="text" maxlength="80"></label>
+    <label>TIPO
+      <select id="ev-type">
+        <option value="church">IGLESIA</option>
+        <option value="friends">AMIGOS</option>
+        <option value="other" selected>OTRO</option>
+      </select>
+    </label>
+    <label>REPETIR
+      <select id="ev-rec">
+        <option value="none" selected>NUNCA</option>
+        <option value="weekly">SEMANAL</option>
+        <option value="monthly">MENSUAL</option>
+      </select>
+    </label>
+    <label>SERVICIO (solo domingos)
+      <input id="ev-service" type="text" maxlength="120"
+             placeholder="EJ: BEVY CANTO, ROBERTO CÁMARA">
+    </label>
+    <div id="modal-btns">
+      <button id="ev-save" class="btn">GUARDAR</button>
+      <button id="ev-delete" class="btn danger" hidden>ELIMINAR</button>
+      <button id="ev-cancel" class="btn dim">CANCELAR</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/verse.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/cabinet.js"></script>
+<script src="js/telegram.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
