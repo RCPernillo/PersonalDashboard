@@ -1,0 +1,123 @@
+<strings>
+    <string id="AppName">Circles Ultra</string>
+
+    <!-- weekday / month short names, referenced from the view -->
+    <string id="Sun">SUN</string>
+    <string id="Mon">MON</string>
+    <string id="Tue">TUE</string>
+    <string id="Wed">WED</string>
+    <string id="Thu">THU</string>
+    <string id="Fri">FRI</string>
+    <string id="Sat">SAT</string>
+
+    <string id="Jan">JAN</string>
+    <string id="Feb">FEB</string>
+    <string id="Mar">MAR</string>
+    <string id="Apr">APR</string>
+    <string id="May">MAY</string>
+    <string id="Jun">JUN</string>
+    <string id="Jul">JUL</string>
+    <string id="Aug">AUG</string>
+    <string id="Sep">SEP</string>
+    <string id="Oct">OCT</string>
+    <string id="Nov">NOV</string>
+    <string id="Dec">DEC</string>
+
+    <!-- ===================== settings menu ===================== -->
+    <string id="SetAppearance">Appearance</string>
+    <string id="SetTheme">Accent color</string>
+    <string id="SetMulticolor">Multicolor spheres</string>
+    <string id="SetMulticolorPrompt">Tint each sphere by its metric instead of the accent color</string>
+
+    <string id="SetNight">Night mode</string>
+    <string id="SetNightOn">Always red-on-black</string>
+    <string id="SetNightAuto">Auto (time window)</string>
+    <string id="SetNightStart">Night start hour</string>
+    <string id="SetNightEnd">Night end hour</string>
+
+    <string id="SetBattery">Battery &amp; power</string>
+    <string id="SetBatterySaver">Battery saver</string>
+    <string id="SetBatterySaverPrompt">Dim palette, no live seconds, minimal always-on</string>
+    <string id="SetSeconds">Seconds</string>
+    <string id="SetSecondsOff">Off</string>
+    <string id="SetSecondsAwake">When awake only</string>
+    <string id="SetSecondsAlways">Always on</string>
+
+    <string id="SetLayout">Layout</string>
+    <string id="SetHourMarks">Hour marks</string>
+    <string id="SetShowValues">Sphere values</string>
+    <string id="SetDate">Date format</string>
+    <string id="SetDateOff">Off</string>
+    <string id="SetDateDayNum">Weekday + day</string>
+    <string id="SetDateNumMonth">Day + month</string>
+    <string id="SetDateFull">Weekday + day + month</string>
+
+    <string id="SetRing">Outer ring metric</string>
+    <string id="SetSpheres">Spheres</string>
+    <string id="SetSphere1">Sphere 1 metric</string>
+    <string id="SetSphere2">Sphere 2 metric</string>
+    <string id="SetSphere3">Sphere 3 metric</string>
+    <string id="SetSphere4">Sphere 4 metric</string>
+    <string id="SetSphere1Icon">Sphere 1 icon</string>
+    <string id="SetSphere2Icon">Sphere 2 icon</string>
+    <string id="SetSphere3Icon">Sphere 3 icon</string>
+    <string id="SetSphere4Icon">Sphere 4 icon</string>
+
+    <!-- accent colors -->
+    <string id="ClrUltraOrange">Ultra Orange</string>
+    <string id="ClrTrailYellow">Trail Yellow</string>
+    <string id="ClrOceanBlue">Ocean Blue</string>
+    <string id="ClrAlpineGreen">Alpine Green</string>
+    <string id="ClrNightRed">Night Red</string>
+    <string id="ClrFlamingo">Flamingo</string>
+    <string id="ClrViolet">Violet</string>
+    <string id="ClrGlacier">Glacier</string>
+    <string id="ClrMint">Mint</string>
+    <string id="ClrMonoWhite">Mono White</string>
+    <string id="ClrGraphite">Graphite</string>
+    <string id="ClrNautical">Nautical</string>
+
+    <!-- metrics -->
+    <string id="MetNone">Off</string>
+    <string id="MetSteps">Steps</string>
+    <string id="MetCalories">Calories</string>
+    <string id="MetHeartRate">Heart rate</string>
+    <string id="MetBattery">Battery</string>
+    <string id="MetBodyBattery">Body Battery</string>
+    <string id="MetStress">Stress</string>
+    <string id="MetDistance">Distance</string>
+    <string id="MetFloors">Floors</string>
+    <string id="MetActiveMinutes">Active minutes</string>
+    <string id="MetNotifications">Notifications</string>
+    <string id="MetAltitude">Altitude</string>
+    <string id="MetTemperature">Temperature</string>
+    <string id="MetSunriseSunset">Sunrise / sunset</string>
+    <string id="MetMoveBar">Move bar</string>
+    <string id="MetDayProgress">Day progress</string>
+    <string id="MetSeconds">Seconds</string>
+    <string id="MetDate">Date</string>
+
+    <!-- icon choices (0 = auto) -->
+    <string id="IcoAuto">Auto (match metric)</string>
+    <string id="IcoSteps">Footprints</string>
+    <string id="IcoFlame">Flame</string>
+    <string id="IcoHeart">Heart</string>
+    <string id="IcoBattery">Battery</string>
+    <string id="IcoBolt">Bolt</string>
+    <string id="IcoWave">Wave</string>
+    <string id="IcoRoute">Route</string>
+    <string id="IcoStairs">Stairs</string>
+    <string id="IcoClock">Clock</string>
+    <string id="IcoBell">Bell</string>
+    <string id="IcoMountain">Mountain</string>
+    <string id="IcoThermo">Thermometer</string>
+    <string id="IcoSun">Sun</string>
+    <string id="IcoMoon">Moon</string>
+    <string id="IcoMove">Bars</string>
+    <string id="IcoPhone">Phone</string>
+    <string id="IcoDot">Dot</string>
+    <string id="IcoDrop">Drop</string>
+    <string id="IcoTarget">Target</string>
+    <string id="IcoAlarm">Alarm</string>
+    <string id="IcoCalendar">Calendar</string>
+</strings>

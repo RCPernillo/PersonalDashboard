@@ -1,0 +1,34 @@
+<properties>
+    <!-- appearance -->
+    <property id="themeId" type="number">0</property>
+    <property id="multicolor" type="boolean">false</property>
+
+    <!-- night mode -->
+    <property id="nightMode" type="boolean">false</property>
+    <property id="nightAuto" type="boolean">false</property>
+    <property id="nightStart" type="number">22</property>
+    <property id="nightEnd" type="number">6</property>
+
+    <!-- battery / power -->
+    <property id="batterySaver" type="boolean">false</property>
+    <property id="secondsMode" type="number">0</property>
+
+    <!-- layout -->
+    <property id="showHourMarks" type="boolean">true</property>
+    <property id="showValues" type="boolean">true</property>
+    <property id="dateFormat" type="number">1</property>
+
+    <!-- ring + spheres -->
+    <property id="ringMetric" type="number">15</property>
+    <property id="sphere1Metric" type="number">1</property>
+    <property id="sphere2Metric" type="number">3</property>
+    <property id="sphere3Metric" type="number">2</property>
+    <property id="sphere4Metric" type="number">4</property>
+    <property id="sphere1Icon" type="number">0</property>
+    <property id="sphere2Icon" type="number">0</property>
+    <property id="sphere3Icon" type="number">0</property>
+    <property id="sphere4Icon" type="number">0</property>
+
+    <!-- runtime, not user-facing -->
+    <property id="partialDisabled" type="boolean">false</property>
+</properties>

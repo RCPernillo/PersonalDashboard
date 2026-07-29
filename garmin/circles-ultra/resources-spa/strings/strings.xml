@@ -1,0 +1,118 @@
+<strings>
+    <string id="AppName">Circles Ultra</string>
+
+    <string id="Sun">DOM</string>
+    <string id="Mon">LUN</string>
+    <string id="Tue">MAR</string>
+    <string id="Wed">MIÉ</string>
+    <string id="Thu">JUE</string>
+    <string id="Fri">VIE</string>
+    <string id="Sat">SÁB</string>
+
+    <string id="Jan">ENE</string>
+    <string id="Feb">FEB</string>
+    <string id="Mar">MAR</string>
+    <string id="Apr">ABR</string>
+    <string id="May">MAY</string>
+    <string id="Jun">JUN</string>
+    <string id="Jul">JUL</string>
+    <string id="Aug">AGO</string>
+    <string id="Sep">SEP</string>
+    <string id="Oct">OCT</string>
+    <string id="Nov">NOV</string>
+    <string id="Dec">DIC</string>
+
+    <string id="SetAppearance">Apariencia</string>
+    <string id="SetTheme">Color de acento</string>
+    <string id="SetMulticolor">Esferas multicolor</string>
+    <string id="SetMulticolorPrompt">Colorea cada esfera según su métrica en vez del acento</string>
+
+    <string id="SetNight">Modo noche</string>
+    <string id="SetNightOn">Siempre rojo sobre negro</string>
+    <string id="SetNightAuto">Automático (franja horaria)</string>
+    <string id="SetNightStart">Hora de inicio noche</string>
+    <string id="SetNightEnd">Hora de fin noche</string>
+
+    <string id="SetBattery">Batería y energía</string>
+    <string id="SetBatterySaver">Ahorro de batería</string>
+    <string id="SetBatterySaverPrompt">Paleta tenue, sin segundos en vivo, pantalla siempre activa mínima</string>
+    <string id="SetSeconds">Segundos</string>
+    <string id="SetSecondsOff">Desactivado</string>
+    <string id="SetSecondsAwake">Solo al activar</string>
+    <string id="SetSecondsAlways">Siempre visible</string>
+
+    <string id="SetLayout">Diseño</string>
+    <string id="SetHourMarks">Marcas de hora</string>
+    <string id="SetShowValues">Valores en esferas</string>
+    <string id="SetDate">Formato de fecha</string>
+    <string id="SetDateOff">Desactivado</string>
+    <string id="SetDateDayNum">Día semana + número</string>
+    <string id="SetDateNumMonth">Número + mes</string>
+    <string id="SetDateFull">Día + número + mes</string>
+
+    <string id="SetRing">Métrica del anillo</string>
+    <string id="SetSpheres">Esferas</string>
+    <string id="SetSphere1">Métrica esfera 1</string>
+    <string id="SetSphere2">Métrica esfera 2</string>
+    <string id="SetSphere3">Métrica esfera 3</string>
+    <string id="SetSphere4">Métrica esfera 4</string>
+    <string id="SetSphere1Icon">Icono esfera 1</string>
+    <string id="SetSphere2Icon">Icono esfera 2</string>
+    <string id="SetSphere3Icon">Icono esfera 3</string>
+    <string id="SetSphere4Icon">Icono esfera 4</string>
+
+    <string id="ClrUltraOrange">Naranja Ultra</string>
+    <string id="ClrTrailYellow">Amarillo Sendero</string>
+    <string id="ClrOceanBlue">Azul Océano</string>
+    <string id="ClrAlpineGreen">Verde Alpino</string>
+    <string id="ClrNightRed">Rojo Noche</string>
+    <string id="ClrFlamingo">Flamenco</string>
+    <string id="ClrViolet">Violeta</string>
+    <string id="ClrGlacier">Glaciar</string>
+    <string id="ClrMint">Menta</string>
+    <string id="ClrMonoWhite">Blanco Mono</string>
+    <string id="ClrGraphite">Grafito</string>
+    <string id="ClrNautical">Náutico</string>
+
+    <string id="MetNone">Desactivado</string>
+    <string id="MetSteps">Pasos</string>
+    <string id="MetCalories">Calorías</string>
+    <string id="MetHeartRate">Frecuencia cardíaca</string>
+    <string id="MetBattery">Batería</string>
+    <string id="MetBodyBattery">Body Battery</string>
+    <string id="MetStress">Estrés</string>
+    <string id="MetDistance">Distancia</string>
+    <string id="MetFloors">Pisos</string>
+    <string id="MetActiveMinutes">Minutos activos</string>
+    <string id="MetNotifications">Notificaciones</string>
+    <string id="MetAltitude">Altitud</string>
+    <string id="MetTemperature">Temperatura</string>
+    <string id="MetSunriseSunset">Amanecer / atardecer</string>
+    <string id="MetMoveBar">Barra de movimiento</string>
+    <string id="MetDayProgress">Progreso del día</string>
+    <string id="MetSeconds">Segundos</string>
+    <string id="MetDate">Fecha</string>
+
+    <string id="IcoAuto">Automático (según métrica)</string>
+    <string id="IcoSteps">Huellas</string>
+    <string id="IcoFlame">Llama</string>
+    <string id="IcoHeart">Corazón</string>
+    <string id="IcoBattery">Batería</string>
+    <string id="IcoBolt">Rayo</string>
+    <string id="IcoWave">Onda</string>
+    <string id="IcoRoute">Ruta</string>
+    <string id="IcoStairs">Escaleras</string>
+    <string id="IcoClock">Reloj</string>
+    <string id="IcoBell">Campana</string>
+    <string id="IcoMountain">Montaña</string>
+    <string id="IcoThermo">Termómetro</string>
+    <string id="IcoSun">Sol</string>
+    <string id="IcoMoon">Luna</string>
+    <string id="IcoMove">Barras</string>
+    <string id="IcoPhone">Teléfono</string>
+    <string id="IcoDot">Punto</string>
+    <string id="IcoDrop">Gota</string>
+    <string id="IcoTarget">Diana</string>
+    <string id="IcoAlarm">Alarma</string>
+    <string id="IcoCalendar">Calendario</string>
+</strings>

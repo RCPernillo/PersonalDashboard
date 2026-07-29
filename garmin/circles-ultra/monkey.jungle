@@ -1,0 +1,8 @@
+project.manifest = manifest.xml
+
+base.sourcePath = source
+base.resourcePath = resources
+
+# Spanish strings. Everything else (layout, colours) is computed at runtime,
+# so only the string table needs a localized copy.
+base.lang.spa.resourcePath = resources-spa

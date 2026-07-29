@@ -9,6 +9,11 @@ Estética Teenage Engineering / OP-1: crema de día, casi negro de noche, naranj
 `#ff5500` y verde apagado `#6b7d5a` solo como puntuación, líneas de 1 px, reloj
 de matriz de puntos, etiquetas de panel estilo hardware (`01 · RELOJ`, …).
 
+> **Otros proyectos en este repo** · [`garmin/circles-ultra`](garmin/circles-ultra/README.md):
+> una esfera de reloj Garmin (Connect IQ) al estilo Apple Watch Ultra, pensada
+> para el **Forerunner 165** y optimizada para ahorrar batería, con colores de
+> acento e iconos personalizables.
+
 ---
 
 ## 1 · Compilar, firmar e instalar (sideload)

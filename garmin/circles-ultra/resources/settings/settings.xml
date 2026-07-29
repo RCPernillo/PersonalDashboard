@@ -1,0 +1,283 @@
+<settings>
+    <!-- ===================== Appearance ===================== -->
+    <setting propertyKey="@Properties.themeId" title="@Strings.SetTheme">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.ClrUltraOrange</listEntry>
+            <listEntry value="1">@Strings.ClrTrailYellow</listEntry>
+            <listEntry value="2">@Strings.ClrOceanBlue</listEntry>
+            <listEntry value="3">@Strings.ClrAlpineGreen</listEntry>
+            <listEntry value="4">@Strings.ClrNightRed</listEntry>
+            <listEntry value="5">@Strings.ClrFlamingo</listEntry>
+            <listEntry value="6">@Strings.ClrViolet</listEntry>
+            <listEntry value="7">@Strings.ClrGlacier</listEntry>
+            <listEntry value="8">@Strings.ClrMint</listEntry>
+            <listEntry value="9">@Strings.ClrMonoWhite</listEntry>
+            <listEntry value="10">@Strings.ClrGraphite</listEntry>
+            <listEntry value="11">@Strings.ClrNautical</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.multicolor" title="@Strings.SetMulticolor"
+             prompt="@Strings.SetMulticolorPrompt">
+        <settingConfig type="boolean"/>
+    </setting>
+
+    <!-- ===================== Battery & power ===================== -->
+    <setting propertyKey="@Properties.batterySaver" title="@Strings.SetBatterySaver"
+             prompt="@Strings.SetBatterySaverPrompt">
+        <settingConfig type="boolean"/>
+    </setting>
+
+    <setting propertyKey="@Properties.secondsMode" title="@Strings.SetSeconds">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.SetSecondsOff</listEntry>
+            <listEntry value="1">@Strings.SetSecondsAwake</listEntry>
+            <listEntry value="2">@Strings.SetSecondsAlways</listEntry>
+        </settingConfig>
+    </setting>
+
+    <!-- ===================== Night mode ===================== -->
+    <setting propertyKey="@Properties.nightMode" title="@Strings.SetNightOn">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.nightAuto" title="@Strings.SetNightAuto">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.nightStart" title="@Strings.SetNightStart">
+        <settingConfig type="numeric" min="0" max="23"/>
+    </setting>
+    <setting propertyKey="@Properties.nightEnd" title="@Strings.SetNightEnd">
+        <settingConfig type="numeric" min="0" max="23"/>
+    </setting>
+
+    <!-- ===================== Layout ===================== -->
+    <setting propertyKey="@Properties.showHourMarks" title="@Strings.SetHourMarks">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.showValues" title="@Strings.SetShowValues">
+        <settingConfig type="boolean"/>
+    </setting>
+    <setting propertyKey="@Properties.dateFormat" title="@Strings.SetDate">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.SetDateOff</listEntry>
+            <listEntry value="1">@Strings.SetDateDayNum</listEntry>
+            <listEntry value="2">@Strings.SetDateNumMonth</listEntry>
+            <listEntry value="3">@Strings.SetDateFull</listEntry>
+        </settingConfig>
+    </setting>
+
+    <!-- ===================== Ring ===================== -->
+    <setting propertyKey="@Properties.ringMetric" title="@Strings.SetRing">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.MetNone</listEntry>
+            <listEntry value="1">@Strings.MetSteps</listEntry>
+            <listEntry value="2">@Strings.MetCalories</listEntry>
+            <listEntry value="3">@Strings.MetHeartRate</listEntry>
+            <listEntry value="4">@Strings.MetBattery</listEntry>
+            <listEntry value="5">@Strings.MetBodyBattery</listEntry>
+            <listEntry value="6">@Strings.MetStress</listEntry>
+            <listEntry value="7">@Strings.MetDistance</listEntry>
+            <listEntry value="8">@Strings.MetFloors</listEntry>
+            <listEntry value="9">@Strings.MetActiveMinutes</listEntry>
+            <listEntry value="10">@Strings.MetNotifications</listEntry>
+            <listEntry value="11">@Strings.MetAltitude</listEntry>
+            <listEntry value="12">@Strings.MetTemperature</listEntry>
+            <listEntry value="13">@Strings.MetSunriseSunset</listEntry>
+            <listEntry value="14">@Strings.MetMoveBar</listEntry>
+            <listEntry value="15">@Strings.MetDayProgress</listEntry>
+        </settingConfig>
+    </setting>
+
+    <!-- ===================== Spheres ===================== -->
+    <setting propertyKey="@Properties.sphere1Metric" title="@Strings.SetSphere1">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.MetNone</listEntry>
+            <listEntry value="1">@Strings.MetSteps</listEntry>
+            <listEntry value="2">@Strings.MetCalories</listEntry>
+            <listEntry value="3">@Strings.MetHeartRate</listEntry>
+            <listEntry value="4">@Strings.MetBattery</listEntry>
+            <listEntry value="5">@Strings.MetBodyBattery</listEntry>
+            <listEntry value="6">@Strings.MetStress</listEntry>
+            <listEntry value="7">@Strings.MetDistance</listEntry>
+            <listEntry value="8">@Strings.MetFloors</listEntry>
+            <listEntry value="9">@Strings.MetActiveMinutes</listEntry>
+            <listEntry value="10">@Strings.MetNotifications</listEntry>
+            <listEntry value="11">@Strings.MetAltitude</listEntry>
+            <listEntry value="12">@Strings.MetTemperature</listEntry>
+            <listEntry value="13">@Strings.MetSunriseSunset</listEntry>
+            <listEntry value="14">@Strings.MetMoveBar</listEntry>
+            <listEntry value="15">@Strings.MetDayProgress</listEntry>
+            <listEntry value="17">@Strings.MetDate</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.sphere1Icon" title="@Strings.SetSphere1Icon">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.IcoAuto</listEntry>
+            <listEntry value="2">@Strings.IcoSteps</listEntry>
+            <listEntry value="3">@Strings.IcoFlame</listEntry>
+            <listEntry value="4">@Strings.IcoHeart</listEntry>
+            <listEntry value="5">@Strings.IcoBattery</listEntry>
+            <listEntry value="6">@Strings.IcoBolt</listEntry>
+            <listEntry value="7">@Strings.IcoWave</listEntry>
+            <listEntry value="8">@Strings.IcoRoute</listEntry>
+            <listEntry value="9">@Strings.IcoStairs</listEntry>
+            <listEntry value="10">@Strings.IcoClock</listEntry>
+            <listEntry value="11">@Strings.IcoBell</listEntry>
+            <listEntry value="12">@Strings.IcoMountain</listEntry>
+            <listEntry value="13">@Strings.IcoThermo</listEntry>
+            <listEntry value="14">@Strings.IcoSun</listEntry>
+            <listEntry value="15">@Strings.IcoMoon</listEntry>
+            <listEntry value="16">@Strings.IcoMove</listEntry>
+            <listEntry value="17">@Strings.IcoPhone</listEntry>
+            <listEntry value="18">@Strings.IcoDot</listEntry>
+            <listEntry value="19">@Strings.IcoDrop</listEntry>
+            <listEntry value="20">@Strings.IcoTarget</listEntry>
+            <listEntry value="21">@Strings.IcoAlarm</listEntry>
+            <listEntry value="22">@Strings.IcoCalendar</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.sphere2Metric" title="@Strings.SetSphere2">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.MetNone</listEntry>
+            <listEntry value="1">@Strings.MetSteps</listEntry>
+            <listEntry value="2">@Strings.MetCalories</listEntry>
+            <listEntry value="3">@Strings.MetHeartRate</listEntry>
+            <listEntry value="4">@Strings.MetBattery</listEntry>
+            <listEntry value="5">@Strings.MetBodyBattery</listEntry>
+            <listEntry value="6">@Strings.MetStress</listEntry>
+            <listEntry value="7">@Strings.MetDistance</listEntry>
+            <listEntry value="8">@Strings.MetFloors</listEntry>
+            <listEntry value="9">@Strings.MetActiveMinutes</listEntry>
+            <listEntry value="10">@Strings.MetNotifications</listEntry>
+            <listEntry value="11">@Strings.MetAltitude</listEntry>
+            <listEntry value="12">@Strings.MetTemperature</listEntry>
+            <listEntry value="13">@Strings.MetSunriseSunset</listEntry>
+            <listEntry value="14">@Strings.MetMoveBar</listEntry>
+            <listEntry value="15">@Strings.MetDayProgress</listEntry>
+            <listEntry value="17">@Strings.MetDate</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.sphere2Icon" title="@Strings.SetSphere2Icon">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.IcoAuto</listEntry>
+            <listEntry value="2">@Strings.IcoSteps</listEntry>
+            <listEntry value="3">@Strings.IcoFlame</listEntry>
+            <listEntry value="4">@Strings.IcoHeart</listEntry>
+            <listEntry value="5">@Strings.IcoBattery</listEntry>
+            <listEntry value="6">@Strings.IcoBolt</listEntry>
+            <listEntry value="7">@Strings.IcoWave</listEntry>
+            <listEntry value="8">@Strings.IcoRoute</listEntry>
+            <listEntry value="9">@Strings.IcoStairs</listEntry>
+            <listEntry value="10">@Strings.IcoClock</listEntry>
+            <listEntry value="11">@Strings.IcoBell</listEntry>
+            <listEntry value="12">@Strings.IcoMountain</listEntry>
+            <listEntry value="13">@Strings.IcoThermo</listEntry>
+            <listEntry value="14">@Strings.IcoSun</listEntry>
+            <listEntry value="15">@Strings.IcoMoon</listEntry>
+            <listEntry value="16">@Strings.IcoMove</listEntry>
+            <listEntry value="17">@Strings.IcoPhone</listEntry>
+            <listEntry value="18">@Strings.IcoDot</listEntry>
+            <listEntry value="19">@Strings.IcoDrop</listEntry>
+            <listEntry value="20">@Strings.IcoTarget</listEntry>
+            <listEntry value="21">@Strings.IcoAlarm</listEntry>
+            <listEntry value="22">@Strings.IcoCalendar</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.sphere3Metric" title="@Strings.SetSphere3">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.MetNone</listEntry>
+            <listEntry value="1">@Strings.MetSteps</listEntry>
+            <listEntry value="2">@Strings.MetCalories</listEntry>
+            <listEntry value="3">@Strings.MetHeartRate</listEntry>
+            <listEntry value="4">@Strings.MetBattery</listEntry>
+            <listEntry value="5">@Strings.MetBodyBattery</listEntry>
+            <listEntry value="6">@Strings.MetStress</listEntry>
+            <listEntry value="7">@Strings.MetDistance</listEntry>
+            <listEntry value="8">@Strings.MetFloors</listEntry>
+            <listEntry value="9">@Strings.MetActiveMinutes</listEntry>
+            <listEntry value="10">@Strings.MetNotifications</listEntry>
+            <listEntry value="11">@Strings.MetAltitude</listEntry>
+            <listEntry value="12">@Strings.MetTemperature</listEntry>
+            <listEntry value="13">@Strings.MetSunriseSunset</listEntry>
+            <listEntry value="14">@Strings.MetMoveBar</listEntry>
+            <listEntry value="15">@Strings.MetDayProgress</listEntry>
+            <listEntry value="17">@Strings.MetDate</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.sphere3Icon" title="@Strings.SetSphere3Icon">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.IcoAuto</listEntry>
+            <listEntry value="2">@Strings.IcoSteps</listEntry>
+            <listEntry value="3">@Strings.IcoFlame</listEntry>
+            <listEntry value="4">@Strings.IcoHeart</listEntry>
+            <listEntry value="5">@Strings.IcoBattery</listEntry>
+            <listEntry value="6">@Strings.IcoBolt</listEntry>
+            <listEntry value="7">@Strings.IcoWave</listEntry>
+            <listEntry value="8">@Strings.IcoRoute</listEntry>
+            <listEntry value="9">@Strings.IcoStairs</listEntry>
+            <listEntry value="10">@Strings.IcoClock</listEntry>
+            <listEntry value="11">@Strings.IcoBell</listEntry>
+            <listEntry value="12">@Strings.IcoMountain</listEntry>
+            <listEntry value="13">@Strings.IcoThermo</listEntry>
+            <listEntry value="14">@Strings.IcoSun</listEntry>
+            <listEntry value="15">@Strings.IcoMoon</listEntry>
+            <listEntry value="16">@Strings.IcoMove</listEntry>
+            <listEntry value="17">@Strings.IcoPhone</listEntry>
+            <listEntry value="18">@Strings.IcoDot</listEntry>
+            <listEntry value="19">@Strings.IcoDrop</listEntry>
+            <listEntry value="20">@Strings.IcoTarget</listEntry>
+            <listEntry value="21">@Strings.IcoAlarm</listEntry>
+            <listEntry value="22">@Strings.IcoCalendar</listEntry>
+        </settingConfig>
+    </setting>
+
+    <setting propertyKey="@Properties.sphere4Metric" title="@Strings.SetSphere4">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.MetNone</listEntry>
+            <listEntry value="1">@Strings.MetSteps</listEntry>
+            <listEntry value="2">@Strings.MetCalories</listEntry>
+            <listEntry value="3">@Strings.MetHeartRate</listEntry>
+            <listEntry value="4">@Strings.MetBattery</listEntry>
+            <listEntry value="5">@Strings.MetBodyBattery</listEntry>
+            <listEntry value="6">@Strings.MetStress</listEntry>
+            <listEntry value="7">@Strings.MetDistance</listEntry>
+            <listEntry value="8">@Strings.MetFloors</listEntry>
+            <listEntry value="9">@Strings.MetActiveMinutes</listEntry>
+            <listEntry value="10">@Strings.MetNotifications</listEntry>
+            <listEntry value="11">@Strings.MetAltitude</listEntry>
+            <listEntry value="12">@Strings.MetTemperature</listEntry>
+            <listEntry value="13">@Strings.MetSunriseSunset</listEntry>
+            <listEntry value="14">@Strings.MetMoveBar</listEntry>
+            <listEntry value="15">@Strings.MetDayProgress</listEntry>
+            <listEntry value="17">@Strings.MetDate</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.sphere4Icon" title="@Strings.SetSphere4Icon">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.IcoAuto</listEntry>
+            <listEntry value="2">@Strings.IcoSteps</listEntry>
+            <listEntry value="3">@Strings.IcoFlame</listEntry>
+            <listEntry value="4">@Strings.IcoHeart</listEntry>
+            <listEntry value="5">@Strings.IcoBattery</listEntry>
+            <listEntry value="6">@Strings.IcoBolt</listEntry>
+            <listEntry value="7">@Strings.IcoWave</listEntry>
+            <listEntry value="8">@Strings.IcoRoute</listEntry>
+            <listEntry value="9">@Strings.IcoStairs</listEntry>
+            <listEntry value="10">@Strings.IcoClock</listEntry>
+            <listEntry value="11">@Strings.IcoBell</listEntry>
+            <listEntry value="12">@Strings.IcoMountain</listEntry>
+            <listEntry value="13">@Strings.IcoThermo</listEntry>
+            <listEntry value="14">@Strings.IcoSun</listEntry>
+            <listEntry value="15">@Strings.IcoMoon</listEntry>
+            <listEntry value="16">@Strings.IcoMove</listEntry>
+            <listEntry value="17">@Strings.IcoPhone</listEntry>
+            <listEntry value="18">@Strings.IcoDot</listEntry>
+            <listEntry value="19">@Strings.IcoDrop</listEntry>
+            <listEntry value="20">@Strings.IcoTarget</listEntry>
+            <listEntry value="21">@Strings.IcoAlarm</listEntry>
+            <listEntry value="22">@Strings.IcoCalendar</listEntry>
+        </settingConfig>
+    </setting>
+</settings>
