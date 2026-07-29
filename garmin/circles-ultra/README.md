@@ -22,22 +22,27 @@ range of other Connect IQ watches from one binary.
 
 ## Layout
 
+The Apple Watch Ultra "modular" arrangement, rebuilt with circular spheres:
+
 ```
-        ┌───────────────────┐        outer ring  → configurable metric
-        │   · · hour marks   │                      (day progress by default)
-        │                    │
-        │       10:42        │        big time, 24h/12h per system setting
-        │      WED 29        │        optional date line
-        │                    │
-        │   (o) (o) (o) (o)  │        four spheres: icon + value + gauge arc
-        └───────────────────┘
+          ·  ·  ·  ·  ·  ·  ·           60-tick minute ring frames the face
+       ·   (o)  (o)  (o)   ·            top row:  3 spheres
+       ·                   ·
+       |      10:42        |            big thin time, 24h/12h per system
+       ·                   ·
+       ·   (o)  (o)  (o)   ·            bottom row: 3 spheres
+          ·  ·  ·  ·  ·  ·  ·
 ```
 
-Each **sphere** is a circle with a thin gauge arc, a user-chosen icon, and the
-metric's value. Pick any four of: steps, calories, heart rate, battery, Body
+Each **sphere** is a dark disc with a thin gauge arc, a user-chosen icon, and
+the metric's value (the date sphere shows a `WED 29` weekday+day stack). All six
+are independently assignable from: steps, calories, heart rate, battery, Body
 Battery, stress, distance, floors, active minutes, notifications, altitude,
-temperature, sunrise/sunset, move bar, day progress, date. The **outer ring**
-shows any one gauge-friendly metric.
+temperature, sunrise/sunset, move bar, day progress, date.
+
+Defaults — top: Body Battery · Date · Sunrise/Sunset; bottom: Steps · Heart
+rate · Calories. The **tick ring** is the frame (cardinals in the accent color);
+turning on a ring metric adds a thin progress arc just inside it.
 
 ---
 
