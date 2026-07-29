@@ -96,6 +96,10 @@ module Theme {
         var textDim   as Number = 0x888888;
         var track     as Number = 0x222222;
         var background as Number = 0x000000;
+        //! Fill behind each sphere so it reads as a disc. Kept near-black on
+        //! purpose (a lit grey disc costs AMOLED power); dropped to pure black
+        //! in dim/always-on frames.
+        var disc      as Number = 0x101010;
         //! True when the face must stay as dark as possible (night window,
         //! battery saver, or always-on/burn-in rendering).
         var dim as Boolean = false;
@@ -124,6 +128,7 @@ module Theme {
             p.textDim    = 0x550000;
             p.track      = 0x550000;
             p.background = 0x000000;
+            p.disc       = 0x000000;
             p.dim        = true;
             return p;
         }
@@ -138,11 +143,13 @@ module Theme {
             p.text     = ACCENT_DIM[id] == 0x555555 ? 0x888888 : ACCENT[id];
             p.textDim  = ACCENT_DIM[id];
             p.track    = 0x111111;
+            p.disc     = 0x000000;   // no lit disc in always-on
             p.dim      = true;
         } else {
             p.text     = TEXT_BRIGHT;
             p.textDim  = TEXT_DIM;
             p.track    = TRACK_DARK;
+            p.disc     = 0x101010;   // subtle near-black disc
             p.dim      = false;
         }
         return p;

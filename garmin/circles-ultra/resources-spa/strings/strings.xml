@@ -52,14 +52,18 @@
 
     <string id="SetRing">Métrica del anillo</string>
     <string id="SetSpheres">Esferas</string>
-    <string id="SetSphere1">Métrica esfera 1</string>
-    <string id="SetSphere2">Métrica esfera 2</string>
-    <string id="SetSphere3">Métrica esfera 3</string>
-    <string id="SetSphere4">Métrica esfera 4</string>
+    <string id="SetSphere1">Métrica esfera 1 (arriba izq.)</string>
+    <string id="SetSphere2">Métrica esfera 2 (arriba centro)</string>
+    <string id="SetSphere3">Métrica esfera 3 (arriba der.)</string>
+    <string id="SetSphere4">Métrica esfera 4 (abajo izq.)</string>
+    <string id="SetSphere5">Métrica esfera 5 (abajo centro)</string>
+    <string id="SetSphere6">Métrica esfera 6 (abajo der.)</string>
     <string id="SetSphere1Icon">Icono esfera 1</string>
     <string id="SetSphere2Icon">Icono esfera 2</string>
     <string id="SetSphere3Icon">Icono esfera 3</string>
     <string id="SetSphere4Icon">Icono esfera 4</string>
+    <string id="SetSphere5Icon">Icono esfera 5</string>
+    <string id="SetSphere6Icon">Icono esfera 6</string>
 
     <string id="ClrUltraOrange">Naranja Ultra</string>
     <string id="ClrTrailYellow">Amarillo Sendero</string>

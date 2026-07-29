@@ -43,12 +43,20 @@ module Config {
     var showValues    as Boolean = true;
     var dateFormat    as Number  = DATE_DAY_NUM;
 
-    var ringMetric    as Number  = Metrics.DAY_PROGRESS;
-    var sphereMetric  as Array<Number> = [Metrics.STEPS, Metrics.HEART_RATE,
-                                          Metrics.CALORIES, Metrics.BATTERY];
+    //! Optional thin progress arc just inside the tick ring. Defaults off so the
+    //! face matches the Ultra "modular" look, where the frame is the tick ring
+    //! and each sphere carries its own gauge.
+    var ringMetric    as Number  = Metrics.NONE;
+
+    //! Six spheres, laid out three across the top and three across the bottom,
+    //! framing the central time.
+    var sphereMetric  as Array<Number> = [
+        Metrics.BODY_BATTERY, Metrics.DATE, Metrics.SUNRISE_SUNSET,   // top row
+        Metrics.STEPS,        Metrics.HEART_RATE, Metrics.CALORIES    // bottom row
+    ];
     //! 0 means "auto" - use the icon the metric suggests. Anything else is a
     //! direct Icons.* id, which is what makes the icons user-customizable.
-    var sphereIcon    as Array<Number> = [0, 0, 0, 0];
+    var sphereIcon    as Array<Number> = [0, 0, 0, 0, 0, 0];
 
     //! Set to false permanently once the device tells us our per-second
     //! rendering blew the power budget. See CirclesUltraView.onPowerBudgetExceeded.
@@ -104,19 +112,23 @@ module Config {
         showValues    = bool("showValues", true);
         dateFormat    = num("dateFormat", DATE_DAY_NUM, 0, 3);
 
-        ringMetric    = num("ringMetric", Metrics.DAY_PROGRESS, 0, Metrics.COUNT - 1);
+        ringMetric    = num("ringMetric", Metrics.NONE, 0, Metrics.COUNT - 1);
 
         sphereMetric = [
-            num("sphere1Metric", Metrics.STEPS,       0, Metrics.COUNT - 1),
-            num("sphere2Metric", Metrics.HEART_RATE,  0, Metrics.COUNT - 1),
-            num("sphere3Metric", Metrics.CALORIES,    0, Metrics.COUNT - 1),
-            num("sphere4Metric", Metrics.BATTERY,     0, Metrics.COUNT - 1)
+            num("sphere1Metric", Metrics.BODY_BATTERY,   0, Metrics.COUNT - 1),
+            num("sphere2Metric", Metrics.DATE,           0, Metrics.COUNT - 1),
+            num("sphere3Metric", Metrics.SUNRISE_SUNSET, 0, Metrics.COUNT - 1),
+            num("sphere4Metric", Metrics.STEPS,          0, Metrics.COUNT - 1),
+            num("sphere5Metric", Metrics.HEART_RATE,     0, Metrics.COUNT - 1),
+            num("sphere6Metric", Metrics.CALORIES,       0, Metrics.COUNT - 1)
         ];
         sphereIcon = [
             num("sphere1Icon", 0, 0, Icons.COUNT),
             num("sphere2Icon", 0, 0, Icons.COUNT),
             num("sphere3Icon", 0, 0, Icons.COUNT),
-            num("sphere4Icon", 0, 0, Icons.COUNT)
+            num("sphere4Icon", 0, 0, Icons.COUNT),
+            num("sphere5Icon", 0, 0, Icons.COUNT),
+            num("sphere6Icon", 0, 0, Icons.COUNT)
         ];
 
         // Battery saver overrides the expensive options rather than hiding them,

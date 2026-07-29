@@ -54,14 +54,18 @@
 
     <string id="SetRing">Outer ring metric</string>
     <string id="SetSpheres">Spheres</string>
-    <string id="SetSphere1">Sphere 1 metric</string>
-    <string id="SetSphere2">Sphere 2 metric</string>
-    <string id="SetSphere3">Sphere 3 metric</string>
-    <string id="SetSphere4">Sphere 4 metric</string>
+    <string id="SetSphere1">Sphere 1 metric (top left)</string>
+    <string id="SetSphere2">Sphere 2 metric (top center)</string>
+    <string id="SetSphere3">Sphere 3 metric (top right)</string>
+    <string id="SetSphere4">Sphere 4 metric (bottom left)</string>
+    <string id="SetSphere5">Sphere 5 metric (bottom center)</string>
+    <string id="SetSphere6">Sphere 6 metric (bottom right)</string>
     <string id="SetSphere1Icon">Sphere 1 icon</string>
     <string id="SetSphere2Icon">Sphere 2 icon</string>
     <string id="SetSphere3Icon">Sphere 3 icon</string>
     <string id="SetSphere4Icon">Sphere 4 icon</string>
+    <string id="SetSphere5Icon">Sphere 5 icon</string>
+    <string id="SetSphere6Icon">Sphere 6 icon</string>
 
     <!-- accent colors -->
     <string id="ClrUltraOrange">Ultra Orange</string>

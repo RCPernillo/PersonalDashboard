@@ -19,15 +19,22 @@
     <property id="dateFormat" type="number">1</property>
 
     <!-- ring + spheres -->
-    <property id="ringMetric" type="number">15</property>
-    <property id="sphere1Metric" type="number">1</property>
-    <property id="sphere2Metric" type="number">3</property>
-    <property id="sphere3Metric" type="number">2</property>
-    <property id="sphere4Metric" type="number">4</property>
+    <!-- ringMetric 0 = off: the tick ring is the frame, each sphere has its own gauge -->
+    <property id="ringMetric" type="number">0</property>
+    <!-- top row: Body Battery, Date, Sunrise/Sunset -->
+    <property id="sphere1Metric" type="number">5</property>
+    <property id="sphere2Metric" type="number">17</property>
+    <property id="sphere3Metric" type="number">13</property>
+    <!-- bottom row: Steps, Heart rate, Calories -->
+    <property id="sphere4Metric" type="number">1</property>
+    <property id="sphere5Metric" type="number">3</property>
+    <property id="sphere6Metric" type="number">2</property>
     <property id="sphere1Icon" type="number">0</property>
     <property id="sphere2Icon" type="number">0</property>
     <property id="sphere3Icon" type="number">0</property>
     <property id="sphere4Icon" type="number">0</property>
+    <property id="sphere5Icon" type="number">0</property>
+    <property id="sphere6Icon" type="number">0</property>
 
     <!-- runtime, not user-facing -->
     <property id="partialDisabled" type="boolean">false</property>
