@@ -90,11 +90,18 @@ class CirclesUltraView extends WatchUi.WatchFace {
         _timeY = (_h * 0.33).toNumber();
         _dateY = (_h * 0.50).toNumber();
 
-        // Four spheres in a row across the lower third.
-        _sphereR = (_w * 0.115).toNumber();
+        // Four spheres evenly spread across the lower third, sized so they never
+        // touch: centre-to-centre spacing stays wider than a sphere's diameter.
+        _sphereR = (_w * 0.098).toNumber();
         _sphereCy = (_h * 0.72).toNumber();
-        var spacing = _w / 5;
-        _sphereCx = [spacing, spacing * 2, spacing * 3, spacing * 4];
+        var margin = _sphereR + (_w * 0.03).toNumber();
+        var step = (_w - 2 * margin) / 3.0;
+        _sphereCx = [
+            margin,
+            (margin + step).toNumber(),
+            (margin + 2 * step).toNumber(),
+            (margin + 3 * step).toNumber()
+        ];
 
         // Clip box for the once-a-second seconds repaint. Kept small on purpose:
         // the smaller the partial-update region, the lower the power cost.
