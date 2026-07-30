@@ -84,13 +84,14 @@ class CirclesUltraView extends WatchUi.WatchFace {
         _timeFont = Graphics.FONT_NUMBER_HOT;
         _timeY = _cy;
 
-        // Six spheres: three columns, a top row and a bottom row. Columns are
-        // pulled in from the edge so the corner spheres clear the tick ring on a
-        // round screen.
-        _sphereR = (_w * 0.115).toNumber();
-        var colL = (_w * 0.30).toNumber();
+        // Six spheres: three columns, a top row and a bottom row. Sized and
+        // spaced so they never touch each other, clear the tick ring, and leave
+        // the centre open for the time: radius 0.098*w with wide columns gives
+        // an even gap between neighbours and a few px of margin to the ticks.
+        _sphereR = (_w * 0.098).toNumber();
+        var colL = (_w * 0.27).toNumber();
         var colM = (_w * 0.50).toNumber();
-        var colR = (_w * 0.70).toNumber();
+        var colR = (_w * 0.73).toNumber();
         var rowTop = (_h * 0.24).toNumber();
         var rowBot = (_h * 0.76).toNumber();
         _sphereX = [colL, colM, colR, colL, colM, colR];
