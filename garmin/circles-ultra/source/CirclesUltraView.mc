@@ -145,7 +145,7 @@ class CirclesUltraView extends WatchUi.WatchFace {
         // Optional swirl background. Skipped in night / always-on / battery
         // saver, where keeping the panel dark matters more than the texture.
         if (Config.bgPattern && !dim && !night) {
-            drawBackground(dc);
+            drawBackground(dc, pal);
         }
 
         // The tick ring is the frame; skip it in always-on to save pixels.
@@ -164,9 +164,13 @@ class CirclesUltraView extends WatchUi.WatchFace {
         }
     }
 
-    //! Blit the baked swirl bitmap to fill the screen. Loaded lazily so the
-    //! graphics memory is only spent when the pattern is actually enabled.
-    private function drawBackground(dc as Graphics.Dc) as Void {
+    //! Blit the baked swirl mask to fill the screen, tinted to the chosen
+    //! colour. The bitmap is a white line mask on a transparent ground, so
+    //! drawBitmap2's :tintColor recolours the lines to anything - accent, red,
+    //! aqua, whatever the user picks - while the transparent ground keeps the
+    //! rest of the panel black. Loaded lazily so the graphics memory is only
+    //! spent when the pattern is actually enabled.
+    private function drawBackground(dc as Graphics.Dc, pal as Theme.Palette) as Void {
         if (!_bgTried) {
             _bgTried = true;
             try {
@@ -176,7 +180,15 @@ class CirclesUltraView extends WatchUi.WatchFace {
             }
         }
         if (_bg == null) { return; }
-        if (_bg.getWidth() == _w && _bg.getHeight() == _h) {
+
+        var tint = Config.bgColor(pal.accent);
+        var sameSize = (_bg.getWidth() == _w && _bg.getHeight() == _h);
+
+        if (sameSize && (dc has :drawBitmap2)) {
+            // Tinted path (API 3.4.0+): recolour the white mask to `tint`.
+            dc.drawBitmap2(0, 0, _bg, {:tintColor => tint});
+        } else if (sameSize) {
+            // Older devices: no tint available, draw the mask as-is (white).
             dc.drawBitmap(0, 0, _bg);
         } else {
             dc.drawScaledBitmap(0, 0, _w, _h, _bg);

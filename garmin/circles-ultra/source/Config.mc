@@ -47,6 +47,10 @@ module Config {
     //! pixel costs power, so this trades a little battery for texture. Never
     //! drawn in night / always-on / battery-saver frames.
     var bgPattern     as Boolean = false;
+    //! Swirl line colour. 0 = match the accent colour; 1..12 pick a specific
+    //! colour from the accent palette (red, blue, aqua, ...), so the background
+    //! can be a different colour from the rest of the face.
+    var bgColorId     as Number  = 0;
 
     //! Optional thin progress arc just inside the tick ring. Defaults off so the
     //! face matches the Ultra "modular" look, where the frame is the tick ring
@@ -117,6 +121,7 @@ module Config {
         showValues    = bool("showValues", true);
         dateFormat    = num("dateFormat", DATE_DAY_NUM, 0, 3);
         bgPattern     = bool("bgPattern", false);
+        bgColorId     = num("bgColor", 0, 0, Theme.ACCENT.size());
 
         ringMetric    = num("ringMetric", Metrics.NONE, 0, Metrics.COUNT - 1);
 
@@ -163,6 +168,13 @@ module Config {
             // Storage full or unavailable - the in-memory flag still holds for
             // this session, which is the part that protects the battery.
         }
+    }
+
+    //! Resolve the swirl-background colour. 0 means "match accent" (passed in);
+    //! otherwise it's a 1-based index into the accent palette.
+    function bgColor(accent as Number) as Number {
+        if (bgColorId <= 0) { return accent; }
+        return Theme.ACCENT[Theme.clampId(bgColorId - 1)];
     }
 
     //! Resolve the icon for a sphere: explicit choice wins, otherwise the

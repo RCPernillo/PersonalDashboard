@@ -24,9 +24,12 @@ NBANDS = 6.5       # how many contour bands across the noise range
 EDGE = 0.075       # line half-thickness in band units (smaller = thinner)
 WARP = 3.4         # domain-warp strength
 
-# Grey ramp (index 0 = black ground). Neutral white-ish, kept dim on purpose:
-# bright enough to read as "white lines", dark enough to spare the battery.
-PALETTE = [(0, 0, 0), (34, 34, 36), (72, 72, 76), (120, 120, 124), (172, 172, 176)]
+# The pattern is baked as a WHITE line mask with a TRANSPARENT background, so it
+# can be tinted to any colour at draw time (drawBitmap2 :tintColor). Every line
+# palette entry is white; the ramp lives in the alpha channel (tRNS), which both
+# anti-aliases the lines and keeps them dim - fewer fully-lit pixels, less power.
+PALETTE = [(0, 0, 0), (255, 255, 255), (255, 255, 255), (255, 255, 255), (255, 255, 255)]
+ALPHA   = [0, 70, 130, 195, 255]   # index 0 = transparent ground
 
 
 def _hash(ix, iy):
@@ -113,6 +116,7 @@ def write_png(path, rows):
     plte = bytearray()
     for (r, g, b) in PALETTE:
         plte += bytes((r, g, b))
+    trns = bytes(ALPHA)   # per-palette-index alpha
 
     sig = b"\x89PNG\r\n\x1a\n"
     ihdr = struct.pack(">IIBBBBB", W, W, 8, 3, 0, 0, 0)   # 8-bit, colour type 3 (indexed)
@@ -121,6 +125,7 @@ def write_png(path, rows):
         f.write(sig)
         f.write(chunk(b"IHDR", ihdr))
         f.write(chunk(b"PLTE", bytes(plte)))
+        f.write(chunk(b"tRNS", trns))
         f.write(chunk(b"IDAT", idat))
         f.write(chunk(b"IEND", b""))
 

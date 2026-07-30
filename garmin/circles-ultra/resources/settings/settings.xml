@@ -61,6 +61,23 @@
              prompt="@Strings.SetBgPatternPrompt">
         <settingConfig type="boolean"/>
     </setting>
+    <setting propertyKey="@Properties.bgColor" title="@Strings.SetBgColor">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.ClrMatchAccent</listEntry>
+            <listEntry value="1">@Strings.ClrUltraOrange</listEntry>
+            <listEntry value="2">@Strings.ClrTrailYellow</listEntry>
+            <listEntry value="3">@Strings.ClrOceanBlue</listEntry>
+            <listEntry value="4">@Strings.ClrAlpineGreen</listEntry>
+            <listEntry value="5">@Strings.ClrNightRed</listEntry>
+            <listEntry value="6">@Strings.ClrFlamingo</listEntry>
+            <listEntry value="7">@Strings.ClrViolet</listEntry>
+            <listEntry value="8">@Strings.ClrGlacier</listEntry>
+            <listEntry value="9">@Strings.ClrMint</listEntry>
+            <listEntry value="10">@Strings.ClrMonoWhite</listEntry>
+            <listEntry value="11">@Strings.ClrGraphite</listEntry>
+            <listEntry value="12">@Strings.ClrNautical</listEntry>
+        </settingConfig>
+    </setting>
     <setting propertyKey="@Properties.dateFormat" title="@Strings.SetDate">
         <settingConfig type="list">
             <listEntry value="0">@Strings.SetDateOff</listEntry>
