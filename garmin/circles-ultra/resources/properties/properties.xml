@@ -17,6 +17,7 @@
     <property id="showHourMarks" type="boolean">true</property>
     <property id="showValues" type="boolean">true</property>
     <property id="dateFormat" type="number">1</property>
+    <property id="bgPattern" type="boolean">false</property>
 
     <!-- ring + spheres -->
     <!-- ringMetric 0 = off: the tick ring is the frame, each sphere has its own gauge -->

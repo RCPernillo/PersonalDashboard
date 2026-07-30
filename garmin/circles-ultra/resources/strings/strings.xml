@@ -46,6 +46,8 @@
     <string id="SetLayout">Layout</string>
     <string id="SetHourMarks">Hour marks</string>
     <string id="SetShowValues">Sphere values</string>
+    <string id="SetBgPattern">Swirl background</string>
+    <string id="SetBgPatternPrompt">Flowing white lines on black. Costs some battery; off in night / always-on / battery saver.</string>
     <string id="SetDate">Date format</string>
     <string id="SetDateOff">Off</string>
     <string id="SetDateDayNum">Weekday + day</string>

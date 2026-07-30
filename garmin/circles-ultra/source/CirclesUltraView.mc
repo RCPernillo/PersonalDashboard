@@ -51,6 +51,10 @@ class CirclesUltraView extends WatchUi.WatchFace {
     private var _canBurnInProtect as Boolean = false;
     private var _secondsClip as Array<Number> or Null = null;
 
+    // Optional background pattern, loaded on first use.
+    private var _bg as WatchUi.BitmapResource or Null = null;
+    private var _bgTried as Boolean = false;
+
     // Pre-allocated readings so a redraw allocates no memory.
     private var _ring as Metrics.Reading;
     private var _cell as Array<Metrics.Reading>;
@@ -138,6 +142,12 @@ class CirclesUltraView extends WatchUi.WatchFace {
         dc.setColor(pal.text, pal.background);
         dc.clear();
 
+        // Optional swirl background. Skipped in night / always-on / battery
+        // saver, where keeping the panel dark matters more than the texture.
+        if (Config.bgPattern && !dim && !night) {
+            drawBackground(dc);
+        }
+
         // The tick ring is the frame; skip it in always-on to save pixels.
         if (!dim) {
             drawTickRing(dc, pal);
@@ -151,6 +161,25 @@ class CirclesUltraView extends WatchUi.WatchFace {
 
         for (var i = 0; i < 6; i += 1) {
             drawSphere(dc, pal, i, dim);
+        }
+    }
+
+    //! Blit the baked swirl bitmap to fill the screen. Loaded lazily so the
+    //! graphics memory is only spent when the pattern is actually enabled.
+    private function drawBackground(dc as Graphics.Dc) as Void {
+        if (!_bgTried) {
+            _bgTried = true;
+            try {
+                _bg = WatchUi.loadResource(Rez.Drawables.BgPattern) as WatchUi.BitmapResource;
+            } catch (e) {
+                _bg = null;   // out of graphics memory on this device; skip it
+            }
+        }
+        if (_bg == null) { return; }
+        if (_bg.getWidth() == _w && _bg.getHeight() == _h) {
+            dc.drawBitmap(0, 0, _bg);
+        } else {
+            dc.drawScaledBitmap(0, 0, _w, _h, _bg);
         }
     }
 

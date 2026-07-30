@@ -57,6 +57,10 @@
     <setting propertyKey="@Properties.showValues" title="@Strings.SetShowValues">
         <settingConfig type="boolean"/>
     </setting>
+    <setting propertyKey="@Properties.bgPattern" title="@Strings.SetBgPattern"
+             prompt="@Strings.SetBgPatternPrompt">
+        <settingConfig type="boolean"/>
+    </setting>
     <setting propertyKey="@Properties.dateFormat" title="@Strings.SetDate">
         <settingConfig type="list">
             <listEntry value="0">@Strings.SetDateOff</listEntry>

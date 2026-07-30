@@ -44,6 +44,8 @@
     <string id="SetLayout">Diseño</string>
     <string id="SetHourMarks">Marcas de hora</string>
     <string id="SetShowValues">Valores en esferas</string>
+    <string id="SetBgPattern">Fondo de ondas</string>
+    <string id="SetBgPatternPrompt">Líneas blancas fluidas sobre negro. Consume algo de batería; se apaga en noche / siempre activa / ahorro.</string>
     <string id="SetDate">Formato de fecha</string>
     <string id="SetDateOff">Desactivado</string>
     <string id="SetDateDayNum">Día semana + número</string>

@@ -43,6 +43,11 @@ module Config {
     var showValues    as Boolean = true;
     var dateFormat    as Number  = DATE_DAY_NUM;
 
+    //! Optional "liquid swirl" background. Off by default: on AMOLED every lit
+    //! pixel costs power, so this trades a little battery for texture. Never
+    //! drawn in night / always-on / battery-saver frames.
+    var bgPattern     as Boolean = false;
+
     //! Optional thin progress arc just inside the tick ring. Defaults off so the
     //! face matches the Ultra "modular" look, where the frame is the tick ring
     //! and each sphere carries its own gauge.
@@ -111,6 +116,7 @@ module Config {
         showHourMarks = bool("showHourMarks", true);
         showValues    = bool("showValues", true);
         dateFormat    = num("dateFormat", DATE_DAY_NUM, 0, 3);
+        bgPattern     = bool("bgPattern", false);
 
         ringMetric    = num("ringMetric", Metrics.NONE, 0, Metrics.COUNT - 1);
 
