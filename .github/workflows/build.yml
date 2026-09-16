@@ -9,11 +9,11 @@ on:
     branches: [ "claude/xiaomi-pad5-dashboard-d08ikt" ]
   workflow_dispatch:
     inputs:
-      telegram_bot_token:   { description: "Token del bot de Telegram", required: false, default: "" }
-      telegram_chat_ids:    { description: "Chat IDs separados por coma", required: false, default: "" }
-      spotify_client_id:    { description: "Spotify Client ID",          required: false, default: "" }
-      spotify_client_secret:{ description: "Spotify Client Secret",      required: false, default: "" }
-      speaker_name:         { description: "Nombre exacto de la bocina", required: false, default: "" }
+      telegram_bot_token:    { description: "Token del bot de Telegram", required: false, default: "" }
+      telegram_chat_ids:     { description: "Chat IDs separados por coma", required: false, default: "" }
+      spotify_client_id:     { description: "Spotify Client ID",          required: false, default: "" }
+      spotify_client_secret: { description: "Spotify Client Secret",      required: false, default: "" }
+      speaker_name:          { description: "Nombre exacto de la bocina", required: false, default: "" }
 
 permissions:
   contents: write   # para publicar el APK como Release
