@@ -1,0 +1,73 @@
+name: build-apk
+
+# Compila el APK en las máquinas de GitHub (traen el Android SDK y no están
+# tras el proxy). Se dispara en cada push a la rama, o a mano ("Run workflow"),
+# y publica el APK como Release descargable — ideal para bajarlo en la tablet.
+
+on:
+  push:
+    branches: [ "claude/xiaomi-pad5-dashboard-d08ikt" ]
+  workflow_dispatch:
+    inputs:
+      telegram_bot_token:   { description: "Token del bot de Telegram", required: false, default: "" }
+      telegram_chat_ids:    { description: "Chat IDs separados por coma", required: false, default: "" }
+      spotify_client_id:    { description: "Spotify Client ID",          required: false, default: "" }
+      spotify_client_secret:{ description: "Spotify Client Secret",      required: false, default: "" }
+      speaker_name:         { description: "Nombre exacto de la bocina", required: false, default: "" }
+
+permissions:
+  contents: write   # para publicar el APK como Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # Secretos -> local.properties. Toma primero los inputs de "Run workflow";
+      # si están vacíos, usa los Secrets del repo. Nada se imprime en el log.
+      - name: Escribir local.properties
+        env:
+          TG_TOKEN:  ${{ github.event.inputs.telegram_bot_token   || secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHATS:  ${{ github.event.inputs.telegram_chat_ids     || secrets.TELEGRAM_CHAT_IDS }}
+          SP_ID:     ${{ github.event.inputs.spotify_client_id     || secrets.SPOTIFY_CLIENT_ID }}
+          SP_SECRET: ${{ github.event.inputs.spotify_client_secret || secrets.SPOTIFY_CLIENT_SECRET }}
+          SPK_NAME:  ${{ github.event.inputs.speaker_name          || secrets.SPEAKER_NAME }}
+        run: |
+          {
+            printf 'TELEGRAM_BOT_TOKEN=%s\n'    "$TG_TOKEN"
+            printf 'TELEGRAM_CHAT_IDS=%s\n'     "$TG_CHATS"
+            printf 'SPOTIFY_CLIENT_ID=%s\n'     "$SP_ID"
+            printf 'SPOTIFY_CLIENT_SECRET=%s\n' "$SP_SECRET"
+            printf 'SPEAKER_NAME=%s\n'          "$SPK_NAME"
+          } > local.properties
+          echo "local.properties escrito (valores ocultos)."
+
+      - name: Compilar APK de debug
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Preparar APK
+        run: |
+          mkdir -p out
+          cp app/build/outputs/apk/debug/app-debug.apk out/tablero.apk
+
+      - name: Subir como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: tablero-apk
+          path: out/tablero.apk
+
+      - name: Publicar Release descargable
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete tablero --yes --cleanup-tag 2>/dev/null || true
+          gh release create tablero out/tablero.apk \
+            --title "Tablero · APK más reciente" \
+            --notes "APK de debug recién compilado. Descárgalo en la tablet e instálalo (permite orígenes desconocidos)."
