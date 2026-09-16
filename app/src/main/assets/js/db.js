@@ -83,7 +83,7 @@ const DB = (() => {
 
     const events = [
       { title: "CULTO", type: "church", date: sunIso, recurrence: "none",
-        serviceText: "Bevy canto, Roberto cámara y multimedia",
+        serviceText: "Alabanza, cámara y multimedia",
         source: "manual", createdAt: ts },
       { title: "Cena con amigos", type: "friends", date: in3Iso,
         recurrence: "none", source: "manual", createdAt: ts },
