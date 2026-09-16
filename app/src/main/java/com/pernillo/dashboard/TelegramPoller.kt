@@ -37,7 +37,7 @@ class TelegramPoller(private val activity: MainActivity) {
     private var offset: Long = 0
 
     fun start() {
-        if (Config.TELEGRAM_BOT_TOKEN.startsWith("PEGA_AQUI")) {
+        if (Config.TELEGRAM_BOT_TOKEN.isBlank()) {
             Log.w(TAG, "Sin token de Telegram: el loop no arranca (ver README)")
             return
         }

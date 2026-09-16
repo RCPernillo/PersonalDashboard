@@ -18,10 +18,23 @@ de matriz de puntos, etiquetas de panel estilo hardware (`01 · RELOJ`, …).
 - La tablet con **Opciones de desarrollador → Depuración USB** activada
   (Ajustes → Sobre la tablet → tocar 7 veces "Versión de MIUI/HyperOS").
 
-### Antes de compilar
-Edita `app/src/main/java/com/pernillo/dashboard/Config.kt` y pega:
-token del bot de Telegram, los **dos** chat IDs, las llaves de Spotify y el
-nombre exacto de la bocina Bluetooth (secciones 3–5 de este README).
+### Antes de compilar — secretos en `local.properties`
+Los secretos **no van en el código ni en git**. Crea/edita `local.properties`
+en la raíz del proyecto (ya está en `.gitignore`) y agrega estas líneas, además
+de la `sdk.dir` que Android Studio pone sola:
+
+```properties
+TELEGRAM_BOT_TOKEN=123456789:AAF...
+TELEGRAM_CHAT_IDS=111111111,222222222
+SPOTIFY_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+SPOTIFY_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+SPEAKER_NAME=Nombre exacto de la bocina
+```
+
+Gradle los inyecta en `BuildConfig` al compilar; `Config.kt` solo los lee. Si
+falta alguno queda vacío y esa función (Telegram/Spotify/bocina) se desactiva
+sola. Cómo obtener cada valor: secciones 3–5. **Nunca** subas `local.properties`
+al repositorio ni compartas el APK: llevaría tus llaves dentro.
 
 ### Compilar e instalar
 ```bash
@@ -100,8 +113,10 @@ polling** a `getUpdates` — no hay webhook ni servidor.
 
 ### Crear el bot
 1. En Telegram habla con **@BotFather** → `/newbot` → nombre y usuario.
-2. Copia el **token** (formato `123456789:AAF...`) en
-   `Config.TELEGRAM_BOT_TOKEN`.
+2. Copia el **token** (formato `123456789:AAF...`) en la línea
+   `TELEGRAM_BOT_TOKEN` de `local.properties`.
+   - Si el token se te expone alguna vez, revócalo en @BotFather
+     (`/mybots` → tu bot → API Token → Revoke) y pega el nuevo.
 
 ### Encontrar el chat ID de cada uno (Roberto y esposa)
 1. Cada persona le escribe cualquier mensaje al bot nuevo (p. ej. "hola").
@@ -109,8 +124,9 @@ polling** a `getUpdates` — no hay webhook ni servidor.
    `https://api.telegram.org/bot<TU_TOKEN>/getUpdates`
 3. Busca `"chat":{"id":123456789,...}` — ese número es el chat ID de quien
    escribió. Repite con la otra persona.
-4. Pega ambos números en `Config.TELEGRAM_CHAT_IDS`. **Cualquier otro chat se
-   ignora por completo.**
+4. Pon ambos números, separados por coma, en `TELEGRAM_CHAT_IDS` de
+   `local.properties` (p. ej. `TELEGRAM_CHAT_IDS=111111111,222222222`).
+   **Cualquier otro chat se ignora por completo.**
 
 ### Comandos (español primero, alias en inglés)
 | Comando | Alias | Hace |
@@ -140,10 +156,14 @@ las llaves nunca tocan la capa web. Al tocar un resultado se abre el URI
 debe estar instalada y con sesión iniciada) → suena por la bocina conectada.
 
 1. Entra a <https://developer.spotify.com/dashboard> (cuenta gratuita sirve).
-2. **Create app** → nombre cualquiera; Redirect URI no se usa (pon
-   `http://localhost/` si es obligatorio).
-3. Copia **Client ID** y **Client Secret** en `Config.SPOTIFY_CLIENT_ID` /
-   `SPOTIFY_CLIENT_SECRET`.
+2. **Create app** → nombre cualquiera. El **Redirect URI** no se usa (el flujo
+   client-credentials no redirige), pero Spotify ya no acepta
+   `http://localhost/`: pon `http://127.0.0.1:8888/callback` (la IP loopback
+   pasa su validación de "seguro"). Marca **Web API** si lo pide.
+3. En **Settings** copia **Client ID** y **Client Secret** a las líneas
+   `SPOTIFY_CLIENT_ID` / `SPOTIFY_CLIENT_SECRET` de `local.properties`.
+   - El **Client ID** es público; el **Client Secret** no. Si el secret se
+     expone, rótalo en Settings → **Rotate client secret** y pega el nuevo.
 
 Si tu cuenta de Spotify es gratuita, la app de Spotify meterá sus propios
 anuncios — el tablero no agrega ninguno.
@@ -200,7 +220,7 @@ palabra fuera de lugar, es un archivo plano y editable.
 ```
 app/src/main/java/com/pernillo/dashboard/
   MainActivity.kt      actividad única, WebView + inmersivo + keep-awake
-  Config.kt            ← TUS LLAVES AQUÍ
+  Config.kt            lee los secretos de BuildConfig (no los contiene)
   DashboardBridge.kt   puente JS↔nativo (@JavascriptInterface)
   TelegramPoller.kt    long polling + parser de comandos
   SpotifyClient.kt     token client-credentials + búsqueda

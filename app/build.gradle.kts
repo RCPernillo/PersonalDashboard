@@ -1,7 +1,23 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
+
+// ── Secretos fuera de git ──────────────────────────────────────────────────
+// Se leen de local.properties (excluido por .gitignore) y Gradle los inyecta
+// en BuildConfig al compilar. Nunca se suben al repositorio. Si falta un valor,
+// queda en "" y la función correspondiente (Telegram/Spotify/bocina) se
+// desactiva sola. Ver README § "Antes de compilar — secretos".
+val localProps = Properties().apply {
+    val f = rootProject.file("local.properties")
+    if (f.exists()) f.inputStream().use { load(it) }
+}
+fun secret(key: String): String = (localProps.getProperty(key) ?: "")
+    .trim()
+    .replace("\\", "\\\\")
+    .replace("\"", "\\\"")
 
 android {
     namespace = "com.pernillo.dashboard"
@@ -13,6 +29,17 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+
+        // Secretos inyectados desde local.properties (ver arriba).
+        buildConfigField("String", "TELEGRAM_BOT_TOKEN",    "\"${secret("TELEGRAM_BOT_TOKEN")}\"")
+        buildConfigField("String", "TELEGRAM_CHAT_IDS",     "\"${secret("TELEGRAM_CHAT_IDS")}\"")
+        buildConfigField("String", "SPOTIFY_CLIENT_ID",     "\"${secret("SPOTIFY_CLIENT_ID")}\"")
+        buildConfigField("String", "SPOTIFY_CLIENT_SECRET", "\"${secret("SPOTIFY_CLIENT_SECRET")}\"")
+        buildConfigField("String", "SPEAKER_NAME",          "\"${secret("SPEAKER_NAME")}\"")
+    }
+
+    buildFeatures {
+        buildConfig = true   // AGP 8: BuildConfig está apagado por defecto
     }
 
     buildTypes {

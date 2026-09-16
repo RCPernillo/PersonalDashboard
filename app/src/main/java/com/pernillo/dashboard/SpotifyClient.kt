@@ -33,7 +33,7 @@ class SpotifyClient {
      * o {"error":"mensaje en español"} si algo falla.
      */
     fun searchTracks(query: String): String {
-        if (Config.SPOTIFY_CLIENT_ID.startsWith("PEGA_AQUI")) {
+        if (Config.SPOTIFY_CLIENT_ID.isBlank() || Config.SPOTIFY_CLIENT_SECRET.isBlank()) {
             return error("Faltan las llaves de Spotify (ver README)")
         }
         if (query.isBlank()) return error("Búsqueda vacía")

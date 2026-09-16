@@ -28,9 +28,9 @@ object SpeakerConnector {
         Log.i(TAG, "connectSpeaker(): buscando '${Config.SPEAKER_NAME}'")
         onStatus("Conectando bocina…")
 
-        if (Config.SPEAKER_NAME == "NOMBRE_DE_LA_BOCINA") {
+        if (Config.SPEAKER_NAME.isBlank()) {
             Log.w(TAG, "Config.SPEAKER_NAME sin configurar")
-            onStatus("Configura el nombre de la bocina (Config.kt)")
+            onStatus("Configura el nombre de la bocina (local.properties)")
             return
         }
 
